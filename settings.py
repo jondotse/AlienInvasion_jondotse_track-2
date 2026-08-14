@@ -27,26 +27,30 @@ class Settings:
         self.scores_file = BASE_DIR / 'Assets' / 'file' / 'scores.json'
 
         self.ship_file = BASE_DIR / 'Assets' / 'images' / 'spaceShips_005.png'
-        self.ship_w = 60
-        self.ship_h = 80
+        self.ship_w = 70
+        self.ship_h = 90
 
         self.bullet_file = BASE_DIR / 'Assets' / 'images' / 'spaceMissiles_038.png'
         self.laser_sound = BASE_DIR / 'Assets' / 'sound' / 'laser.mp3' 
         self.impact_sound = BASE_DIR / 'Assets' / 'sound' / 'impactSound.mp3' 
+        self.music_file = BASE_DIR / 'Assets' / 'sound' / 'background_music.wav'
 
         self.alien_file = BASE_DIR /'Assets' / 'images' / 'spaceAstronauts_010.png'
-        self.alien_w = 40
-        self.alien_h = 40
+        self.alien_w = 60
+        self.alien_h = 60
         self.fleet_direction = 1
 
-        self.button_w = 200
-        self.button_h = 50
+        self.button_image_file = BASE_DIR / 'Assets' / 'images' / 'play_button.png'
+        self.button_w = 300
+        self.button_h = 100
         self.button_color = (0,135,50)
 
         self.text_color = (255,255,255)
         self.button_font_size = 48
         self.HUD_font_size = 20
-        self.font_file = BASE_DIR / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
+        self.font_file = BASE_DIR / 'Assets' / 'Fonts' / 'Press_Start_2P' / 'PressStart2P-Regular.ttf'
+
+        self.hud_row_gap = 40
 
     def initialize_dynamic_settings(self):
         """Initialize settinsg that change during the game(speeds, bullet size, and behavior of the fleet)."""
