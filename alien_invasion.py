@@ -49,11 +49,15 @@ class AlienInvasion:
         self.impact_sound = pygame.mixer.Sound(self.settings.impact_sound)
         self.impact_sound.set_volume(0.7)
 
+        pygame.mixer.music.load(self.settings.music_file)
+        pygame.mixer.music.set_volume(0.3)
+        pygame.mixer.music.play(-1)
+
         self.ship = Ship(self, Arsenal(self))
         self.alien_fleet = AlienFleet(self)
         self.alien_fleet.create_fleet()
 
-        self.play_button = Button(self, 'Play')
+        self.play_button = Button(self, '')
         self.game_active = False
 
     def run_game(self):
