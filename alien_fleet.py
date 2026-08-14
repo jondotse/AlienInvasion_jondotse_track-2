@@ -42,18 +42,22 @@ class AlienFleet:
         x_offset, y_offset = self.calculate_offsets(alien_w, alien_h, screen_w, fleet_w, fleet_h)
 
         
-        self._create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
+        self._create_wedge_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
 
-    def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
-        """Create aliens in a rectangular grid, skipping every other row/column
-        to form gasps."""
-        for row in range(fleet_h):
-            for col in range(fleet_w):
+    def _create_wedge_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
+        """Create aliens in an inverted pyramid formation: the top rows
+        has the full fleet width, and each row below it is narrower by one alien on each
+        side, converging towoard the center as rows descend."""
+        max_rows = min(fleet_h, 6)
+        for row in range(max_rows):
+            row_indent  =  row * 2
+            row_width = fleet_w - (2 * row_indent)
+            if row_width <= 0:
+                break
+            for col in range(row_indent, row_indent + row_width, 2):
                 current_x = alien_w * col + x_offset
                 current_y = alien_h * row + y_offset
-                if col % 2 == 0 or row % 2 == 0:
-                    continue
-                self._create_alien( current_x, current_y)
+                self._create_alien(current_x, current_y)
 
     def calculate_offsets(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
         """Calculate the horizontal and vertical space needed to center the fleet
