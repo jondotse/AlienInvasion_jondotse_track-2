@@ -26,7 +26,7 @@ class HUD:
         self.game_stats = game._game_stats
         self.font = pygame.font.Font(self.settings.font_file,
                                         self.settings.HUD_font_size)
-        self.padding = 20
+        self.padding = 10
         self.update_scores()
         self.setup_life_image()
         self.update_level()
@@ -82,7 +82,7 @@ class HUD:
                                                 self.settings.text_color, None)
             self.level_rect = self.level_image.get_rect()
             self.level_rect.left = self.padding
-            self.level_rect.top = self.life_rect.bottom + self.padding
+            self.level_rect.top = self.life_rect.bottom + self.settings.hud_row_gap
 
     def _draw_lives(self):
         """Draw one ship for each remaining life, arranged in a horizontal row in the top-left corner
