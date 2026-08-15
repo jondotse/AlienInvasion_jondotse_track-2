@@ -56,7 +56,8 @@ class AlienFleet:
                 break
             for col in range(row_indent, row_indent + row_width, 2):
                 current_x = alien_w * col + x_offset
-                current_y = alien_h * row + y_offset
+                row_spacing = alien_h * 1.5
+                current_y = row_spacing * row + y_offset
                 self._create_alien(current_x, current_y)
 
     def calculate_offsets(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
