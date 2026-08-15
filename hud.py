@@ -84,6 +84,11 @@ class HUD:
             self.level_rect.left = self.padding
             self.level_rect.top = self.life_rect.bottom + self.settings.hud_row_gap
 
+    def _draw_panel(self):
+        panel = pygame.Surface((self.settings.screen_w, 70), pygame.SRCALPHA)
+        panel.fill((0, 0, 0, 140))
+        self.screen.blit(panel, (0, 0))
+
     def _draw_lives(self):
         """Draw one ship for each remaining life, arranged in a horizontal row in the top-left corner
         of the screen."""
@@ -96,6 +101,8 @@ class HUD:
     def draw(self):
         """Draw all HUD elements (high score, max score, current score, level, and remaining
         lives) to the screen."""
+        self._draw_panel()
+        self.screen.blit(self.hi_score_image,self.hi_score_rect)
         self.screen.blit(self.hi_score_image,self.hi_score_rect)
         self.screen.blit(self.max_score_image,self.max_score_rect)
         self.screen.blit(self.score_image,self.score_rect)
